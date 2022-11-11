@@ -87,6 +87,7 @@
   10) 사진
 
   [ 목표 화면 ]
+  
   ![image](https://user-images.githubusercontent.com/57944215/201246510-53dbb819-7faf-4c55-a575-ba9a887b3999.png)
 
   [ OLED화면 ]
