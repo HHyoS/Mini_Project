@@ -79,8 +79,12 @@
     oled.image(base)
     oled.show()
     
+  8) 실행 방법 
   
-  8) 사진
+    python3 googleGlass.py 
+    
+    
+  10) 사진
 
   [ OLED화면 ]
   ![rn_image_picker_lib_temp_70d925ec-3d2e-4d56-88c4-af7337d76ce4](https://user-images.githubusercontent.com/57944215/201246162-09552d25-ff98-4d14-9b35-474adfa94c93.jpg)
