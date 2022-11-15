@@ -11,7 +11,7 @@ DHT_Unified dht(DHTPIN, DHTTYPE);
 uint32_t delayMS;
 
 #define FIREBASE_HOST "https://mymy-1574815720980-default-rtdb.firebaseio.com/"
-#define FIREBASE_AUTH "Z2jkJ7SAKQUdmoNWc68Bjk4bNphDLf9p94YQJJlU"
+#define FIREBASE_AUTH "-" // 개인 키!
 
 FirebaseData firebaseData;
 FirebaseJson json;
