@@ -5,8 +5,11 @@
 사용 IDE : Arduino IDE
 
 IDE 옵션 : 
+
     1. Board -> Node32s
+    
     2. 스케치 - 라이브러리 포함하기 - 라이브러리 관리, "Firebase ESP32 Client"
+    
     3. 에러발생 폴더 제거
     
 ![캡처](https://user-images.githubusercontent.com/57944215/201855922-c05b4ca6-a57d-4222-acf7-c4f81482663f.PNG)
