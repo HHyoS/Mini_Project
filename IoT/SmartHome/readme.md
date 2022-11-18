@@ -1,11 +1,11 @@
 개발 목표 : 배운 iot 지식을 바탕으로 나만의 작은 Smart Home 구축해보기
 
 개발 장비 : 
-  개발 보드 : Raspberry Pi 4 
-  MCU : ESP32
-  시각화 도구 : Node-red
-  IoT 서버 : AWS
-  통신 : Mosquitto( MQTT )
+  1) 개발 보드 : Raspberry Pi 4 
+  2) MCU : ESP32
+  3) 시각화 도구 : Node-red
+  4) IoT 서버 : AWS
+  5) 통신 : Mosquitto( MQTT )
  
 개발 프로세스 :
 
