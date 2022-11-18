@@ -6,6 +6,9 @@
   3) 시각화 도구 : Node-red
   4) IoT 서버 : AWS
   5) 통신 : Mosquitto( MQTT )
+  6) 개발 환경 : 
+    1) ESP32 : Arduino IDE (window)
+    2) Raspberry pi 4 : mobaxterm
  
 개발 프로세스 :
 
@@ -51,6 +54,38 @@ Node-red로 구성한 Ui
 
 
 
+----------------------------------------------------------------------------------------------------------
 
+동작 순서 :
+
+1. Raspberry Pi에 Mosquitto 설치
+ 1) sudo apt install mosquitto -y
+ 2) sudo apt install mosquitto-clients -y 로 브로커 테스트 app 설치
+ 
+2. Mosquitto conf 파일 수정 
+  1) cd /etc/mosquitto
+  2) sudo mosquitto -c mosquitto.conf -v 입력 후 
+  
+    port 1883
+    allow_anonymous true 
+    
+  로 수정 및 저장
+  
+3. broker 실행
+  1) sudo /etc/init.d/mosquitto stop   -> mosquitto를 종료하는 문장으로 mosquitto는 설치하자마자 실행되므로 종료시킴
+  2) sudo mosquitto -c mosquitto.conf -v    -> 바꾼 conf 옵션으로 mosquitto 실행
+ 
+4. Mosuqitto_sub 는 내가 필요한 구독 들 만들기
+  mosquitto_sub -h 라즈베리파이 주소 -t "구독주소"  ex) "myroom/enter"
+  
+5. 개발 pc에서 Node-red 설치
+  1) npm install -g node-red
+  2) cmd창 종료 후 npm install -g node-red-dashboard
+  3) cmd창 종료 후 node-red
+  4) 크롬에서 127.0.0.1:1880 에서 node-red 확인
+  5) node-red ui 제작 후 http://127.0.0.1:1880/ui 에서 확인 가능
+   - 개발 pc의 ip주소 확인 후 http://IP주소:1880/ui 로 모바일에서도 확인 
+  
+  
 
 
