@@ -27,12 +27,14 @@
 
 버전 :
 
-  ver 1.0 : 키보드를 이용한 rc카 이동 구현
+  ver 1.0 (22.11.16) : 키보드를 이용한 rc카 이동 구현
   
-  ver 2.0 : 
+  ver 2.0 (22.11.21): 
     1. Python의 Timer 사용하여 주기적으로 Query 로 값 받기
     2. Query로 받은 Command 대로 Motor 제어하기
     3. RC Car에서 Sensing( Using senseHat ) 한 데이터를 DB에 Query 하기
+    
+  ver 3.0(예정) : 웹과 연동하여 시각화 
   
   
 RC카 사진 
