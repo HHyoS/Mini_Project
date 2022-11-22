@@ -221,7 +221,7 @@ def back():
     myMotor.run(Raspi_MotorHAT.BACKWARD)
 
 
-def stop():
+def stop(): 
     myMotor.setSpeed(200)
     myMotor.run(Raspi_MotorHAT.RELEASE)
 
