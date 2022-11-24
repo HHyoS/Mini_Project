@@ -1,3 +1,7 @@
+ver2 대비 수정사항 및 변경사항은 주말간 작성예정
+
+
+
 RC카 항공샷
 
 ![KakaoTalk_20221124_181054249](https://user-images.githubusercontent.com/57944215/203786095-228f7710-0fbd-413a-ba61-04f8da8adb00.jpg)
