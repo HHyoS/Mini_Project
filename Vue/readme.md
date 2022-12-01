@@ -24,6 +24,7 @@ BackEnd :  express(Node.js)
     ii. 응답 값을 chart 화 시킨다.(https://www.chartjs.org/ 의 charjs를 사용하여)
     
 
+![image](https://user-images.githubusercontent.com/57944215/205061806-d0da6f68-22dd-47ab-a0bb-6cd1ae3df7d0.png)
 
     
 
