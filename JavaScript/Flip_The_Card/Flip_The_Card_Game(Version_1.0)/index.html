@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body> 
+  <!-- 인라인 이벤트를 넣는 이유 = addEventListener를 사용하면 함수를 넣어야 하기 때문에 매개변수가 포함된 함수 실행문구는 넣을 수 없기 때문에
+   인라인에 이벤트를 넣음, 단점은 여러개의 이벤트를 달 수 없음-->
+   <header>
+    <h1>카드 뒤집기 기억력 게임!!!!!!!</h1>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="column" onclick=flip(0)></div>
+        <div class="column" onclick=flip(1)></div>
+        <div class="column" onclick=flip(2)></div>
+        <div class="column" onclick=flip(3)></div>
+      </div>
+      <div class="row">
+        <div class="column" onclick=flip(4)></div>
+        <div class="column" onclick=flip(5)></div>
+        <div class="column" onclick=flip(6)></div>
+        <div class="column" onclick=flip(7)></div>
+      </div>
+      <div class="row">
+        <div class="column" onclick=flip(8)></div>
+        <div class="column" onclick=flip(9)></div>
+        <div class="column" onclick=flip(10)></div>
+        <div class="column" onclick=flip(11)></div>
+      </div>
+    </div>
+  </main>
+  <script src="./index.js"></script>
+</body>
+</html>

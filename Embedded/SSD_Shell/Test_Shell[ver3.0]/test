@@ -1,0 +1,4 @@
+write 3 0x12341234
+fullread
+write 4 0xFFFFFFFF
+fullread
