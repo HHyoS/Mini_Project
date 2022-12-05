@@ -1,19 +1,12 @@
-# cli-test
+카페 주문관리 웹앱 FrontEnd 코드입니다.
 
-## Project setup
-```
-npm install
-```
+Vue를 사용하여 만든 프로젝트로 폴더 내의 파일을 모두 다운받은 후 다음의 순서대로 실행하시면 됩니다.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+1. npm init
 
-### Compiles and minifies for production
-```
-npm run build
-```
+2. npm i
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+3. npm run serve
+
+4. http://localhost:8080/ 접속
+
