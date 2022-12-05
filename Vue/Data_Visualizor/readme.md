@@ -4,13 +4,31 @@
 
 지금까지 익힌 vue.js와 웹관련 기술, 그리고 네이버 디벨로퍼(https://developers.naver.com/main/) 의 	데이터랩 (검색어트렌드) api를 사용하면 특정 검색어를 기준으로 연관 검색를 묶을 수 있고, 그를 통해 시각적으로 표현하는 저만의 실시간 검색순위를 만들기로 했습니다.
 
-[ 기술 스택 ]
+1. 요구사항 정리
 
-FrontEnd :  Vue.js
+  naver datalab api 를 활용해서 data 를 시각
+  
+    A. API 서버 구축하기
+   
+      i. express 서버에서 naver datalab api 를 가져온다.
+      
+      ii. api 를 axios 로 가져와서 리턴해주는 프로젝트를 생성한다.
+      
+    B. Vue.js 로 visualizing
+    
+      i. axios 로 express 단에 요청을 보낸다.
+      
+      ii. 응답 값을 chart 화 시킨다.
+      
+2. 기술 Stack
 
-BackEnd :  express(Node.js)
+  A. express(Node.js)[project4] Data Visualizor 3
+ 
+  B. Vue.js
+ 
+3. 개발 환경 구축
 
-개발환경 : Visual studio code
+    웹 개발 에디터인 Visual Studio Code 를 사용한다
 
 
 [ 개발 설계 ]
