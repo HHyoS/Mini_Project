@@ -160,30 +160,42 @@ def DetectLineSlope(src):
 
 
 
+class DB() :
 
-def polling():
-    global cur, db, ready
+    def __init__(self) :
+        self.db = mysql.connector.connect(host='13.125.216.243',user='hun',password='1234',database='minDB',auth_plugin='mysql_native_password')
+        self.cur = db.cursor()
+        self.ready = None
+        self.timer = None
+        self.polling()
 
-    cur.execute("select * from command order by time desc limit 1")
-    for (id, time, cmd_string, arg_string, is_finish) in cur:
-        if is_finish == 1: break
-        ready = (cmd_string, arg_string)
-        cur.execute("update command set is_finish=1 where is_finish=0")
+    def polling(self):
+    
+        self.cur.execute("select * from command order by time desc limit 1")
+        for (id, time, cmd_string, arg_string, is_finish) in self.cur:
+            if is_finish == 1: break
+            self.ready = (cmd_string, arg_string)
+            self.cur.execute("update command set is_finish=1 where is_finish=0")
 
-    db.commit()
+        self.db.commit()
 
-    global timer
-    timer = Timer(0.1, polling)
-    timer.start()
+        self.timer = Timer(0.1, self.polling)
+        self.timer.start()
 
-def closeDB(signal, frame):
-    global rcCar
-    print("BYE")
-    rcCar.mh.getMotor(2).run(Raspi_MotorHAT.RELEASE)
-    cur.close()
-    db.close()
-    timer.cancel()
-    sys.exit(0)
+    def getReady(self) :
+        return self.ready
+
+    def setReady(self,value) :
+        self.ready = value
+
+    def closeDB(self) :
+        print("BYE")
+        self.db.close()
+        self.cur.close()
+        self.timer.cancel()
+        sys.exit(0)
+
+
 
 def changeMode() :
     global cmd
@@ -222,10 +234,7 @@ def stopevent():
 
 
 # db init
-db = mysql.connector.connect(host='13.125.216.243',user='hun',password='1234',database='minDB',auth_plugin='mysql_native_password')
-cur = db.cursor()
-ready = None
-timer = None
+db = DB()
 lock = Lock()
 
 ## Motor and Camera init
@@ -233,8 +242,7 @@ rcCar = LineTracing()
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH,640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT,360)
-signal.signal(signal.SIGINT, closeDB)
-polling()
+signal.signal(signal.SIGINT, db.closeDB)
 cmd = ""
 
 # mode change
@@ -252,9 +260,9 @@ while True :
         try:
             rcCar.go()
             while cap.isOpened():
-                if ready != None :
-                    cmd , arg = ready
-                    ready = None
+                if db.getReady != None :
+                    cmd , arg = db.getReady()
+                    db.setReady(None)
                 if rcCar.getFlag() != 2 :
                     break
         
@@ -312,10 +320,10 @@ while True :
                     cv2.imshow('ImageWindow', frame)
                     char = cv2.waitKey(1)
 
-                if ready == None: continue
+                if db.getReady() == None: continue
                 
-                cmd, arg= ready
-                ready = None
+                cmd, arg= db.getReady()
+                db.setReady(None)
 
                 if cmd == "go": rcCar.super().go()
                 if cmd == "back": rcCar.super().back()
