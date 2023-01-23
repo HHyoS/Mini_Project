@@ -93,6 +93,42 @@ class LineTracing(Car) :
             sleep(self.d[i])
             self.b.stop()
 
+            
+class DB() :
+
+    def __init__(self) :
+        self.db = mysql.connector.connect(host='13.125.216.243',user='hun',password='1234',database='minDB',auth_plugin='mysql_native_password')
+        self.cur = db.cursor()
+        self.ready = None
+        self.timer = None
+        self.polling()
+
+    def polling(self):
+    
+        self.cur.execute("select * from command order by time desc limit 1")
+        for (id, time, cmd_string, arg_string, is_finish) in self.cur:
+            if is_finish == 1: break
+            self.ready = (cmd_string, arg_string)
+            self.cur.execute("update command set is_finish=1 where is_finish=0")
+
+        self.db.commit()
+
+        self.timer = Timer(0.1, self.polling)
+        self.timer.start()
+
+    def getReady(self) :
+        return self.ready
+
+    def setReady(self,value) :
+        self.ready = value
+
+    def closeDB(self) :
+        print("BYE")
+        self.db.close()
+        self.cur.close()
+        self.timer.cancel()
+        sys.exit(0)
+
 
 def DetectLineSlope(src):
     # 흑백화
@@ -157,45 +193,6 @@ def DetectLineSlope(src):
     # 원본에 합성
     mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
     return mimg, degree_L, degree_R
-
-
-
-class DB() :
-
-    def __init__(self) :
-        self.db = mysql.connector.connect(host='13.125.216.243',user='hun',password='1234',database='minDB',auth_plugin='mysql_native_password')
-        self.cur = db.cursor()
-        self.ready = None
-        self.timer = None
-        self.polling()
-
-    def polling(self):
-    
-        self.cur.execute("select * from command order by time desc limit 1")
-        for (id, time, cmd_string, arg_string, is_finish) in self.cur:
-            if is_finish == 1: break
-            self.ready = (cmd_string, arg_string)
-            self.cur.execute("update command set is_finish=1 where is_finish=0")
-
-        self.db.commit()
-
-        self.timer = Timer(0.1, self.polling)
-        self.timer.start()
-
-    def getReady(self) :
-        return self.ready
-
-    def setReady(self,value) :
-        self.ready = value
-
-    def closeDB(self) :
-        print("BYE")
-        self.db.close()
-        self.cur.close()
-        self.timer.cancel()
-        sys.exit(0)
-
-
 
 def changeMode() :
     global cmd
