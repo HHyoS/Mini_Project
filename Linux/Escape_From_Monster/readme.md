@@ -4,9 +4,7 @@
 
 개발 동기 : 
   
-   Linux C Programming을 공부하며 알게된 ncruses 를 사용하여 CLI 환경에서 GUI 게임을 만들어보고 싶은 생각에 
-   
-   ncurses를 사용하여 게임 설계를 하게되었습니다.
+   Linux CLI 환경에서 lcurses를 사용하여 GUI처럼 동작하는 게임 만들기.
    
 개발 설계
 
